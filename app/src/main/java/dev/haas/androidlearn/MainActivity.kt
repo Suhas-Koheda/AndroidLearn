@@ -1,6 +1,7 @@
 package dev.haas.androidlearn
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.haas.androidlearn.contexts.permissions
 import dev.haas.androidlearn.ui.theme.AndroidLearnTheme
 import dev.haas.androidlearn.viewmodels.ViewModel
 import dev.haas.androidlearn.viewmodels.ViewModel.Companion.Factory
@@ -41,6 +43,11 @@ class MainActivity : ComponentActivity() {
     // to use when the companion object factory is defined in the view model class
     private val viewModel: ViewModel by viewModels {
         Factory
+    }
+
+    init {
+        val myContext: Context = this
+        permissions(this)
     }
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -71,4 +78,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }
